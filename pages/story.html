@@ -4,15 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: x-large;
+        }
+
+        .nav-links {
+            margin-left: 350px;
+        }
+
+        .nav-links a {
+            color: peru;
+            padding: 14px 20px;
+            font-size: x-large;
+            text-decoration: none;
+        }
+
+        .image-and-paragraph {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+
+        .image-and-paragraph img {
+            flex: 0 0 auto;
+        }
+
+        .image-and-paragraph p {
+            font-size: large;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
-    <a href="index.html" style="color:peru; padding: 14px 20px; font-size: x-large; margin-left: 350px;">Home</a>
-    <a href="believe.html" style="color: peru; padding: 14px 20px; font-size: x-large;">What we believe</a>
-    <a href="how.html" style="color: peru; padding: 14px 20px; font-size: x-large;">How it works</a>
-    <a href="story.html" style="color: peru; padding: 14px 20px; font-size: x-large;">Our story</a><br>
-
-    <!-- Image and Paragraph -->
-    <img src="./images/story.jpg" alt="Image Description" width="200" style="margin-top: 20px; margin-right: 20px; flex: 0 0 auto;">
-    <p style="font-size: large; line-height: 1.5;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut placeat esse atque beatae odit dolorem, non corporis rem ducimus vero obcaecati ex rerum sapiente porro minima qui provident ipsa a.</p>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="believe.html">What we believe</a>
+        <a href="how.html">How it works</a>
+        <a href="story.html">Our story</a>
+    </div>
+    
+    <div class="image-and-paragraph">
+        <img src="./images/story.jpg" alt="Image Description" width="200">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut placeat esse atque beatae odit dolorem, non corporis rem ducimus vero obcaecati ex rerum sapiente porro minima qui provident ipsa a.</p>
+    </div>
 </body>
 </html>
+
