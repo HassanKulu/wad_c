@@ -4,28 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: x-large;
+        }
+
+        .nav-links {
+            margin-left: 300px;
+            margin-top: 200px;
+        }
+
+        .nav-links a {
+            color: peru;
+            padding: 14px 20px;
+            font-size: x-large;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+
+        .feature-container {
+            text-align: center;
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 200px;
+        }
+
+        .feature-container span {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .feature-container h3 {
+            font-size: large;
+        }
+
+        .feature-container p {
+            font-size: medium;
+        }
+    </style>
 </head>
 <body>
-    <a href="index.html" style="color:peru; padding: 14px 20px; font-size: x-large; margin-right: 20px; margin-top: 200px; margin-left: 300px;">Home</a>
-    <a href="believe.html" style="color: peru; padding: 14px 20px; font-size: x-large; margin-right: 20px;">What we believe</a>
-    <a href="how.html" style="color: peru; padding: 14px 20px; font-size: x-large; margin-right: 20px;">How it works</a>
-    <a href="story.html" style="color: peru; padding: 14px 20px; font-size: x-large;">Our story</a>
-    <span style="text-align: center; display: inline-block; margin-left: 260px; margin-top: 100px; padding: 20px; border: 1px solid #ccc; border-radius: 8px; width: 200px;">
-        <span style="font-size: 48px; display: block; margin-bottom: 10px;">🌞</span>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="believe.html">What we believe</a>
+        <a href="how.html">How it works</a>
+        <a href="story.html">Our story</a>
+    </div>
+    
+    <div class="feature-container">
+        <span>🌞</span>
         <h3>Diversification</h3>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga eaque necessitatibus odio dolore commodi minima. Veritatis harum esse vero maxime aspernatur illo nam deleniti necessitatibus cumque temporibus. Iure, autem repellendus!</p>
-    </span>
+    </div>
 
-    <span style="text-align: center; display: inline-block; margin: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 8px; width: 200px;">
-        <span style="font-size: 48px; display: block; margin-bottom: 10px;">🌧️</span>
+    <div class="feature-container">
+        <span>🌧️</span>
         <h3>The power of compounding</h3>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Et, incidunt sequi. Ea modi unde fugiat aliquid quis ipsam voluptas cumque similique beatae dicta itaque ad expedita, explicabo corrupti iste delectus.</p>
-    </span>
+    </div>
 
-    <span style="text-align: center; display: inline-block; margin: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 8px; width: 200px;">
-        <span style="font-size: 48px; display: block; margin-bottom: 10px;">🌈</span>
+    <div class="feature-container">
+        <span>🌈</span>
         <h3>Spreading Positivity</h3>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem cumque porro dolor consequatur iusto possimus quia eum dolore ullam? Similique fugit illum saepe placeat pariatur temporibus nam dolor doloremque ullam.</p>
-    </span>
+    </div>
 </body>
 </html>
