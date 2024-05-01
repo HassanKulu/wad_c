@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#logo {
+    max-width: 100px;
+    height: auto;
+    margin-top: 40px;
+}
+
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.link {
+    color: aliceblue;
+    padding: 14px 20px;
+    font-size: x-large;
+    margin-right: 20px;
+}
+
+.link:last-child {
+    margin-right: 0;
+}
