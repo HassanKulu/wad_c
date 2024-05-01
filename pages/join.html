@@ -4,13 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: x-large;
+        }
+
+        .nav-links {
+            margin-top: 200px;
+            text-align: center;
+        }
+
+        .nav-links a {
+            color: peru;
+            padding: 14px 20px;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+
+        .join-section {
+            text-align: center;
+            margin-top: 200px;
+        }
+
+        .join-section h1 {
+            font-size: xx-large;
+        }
+
+        .join-section .registration-link {
+            background-color: peru;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <a href="index.html" style="color:peru; padding: 14px 20px; font-size: x-large; margin-right: 20px; margin-top: 200px; margin-left: 300px;">Home</a>
-    <a href="believe.html" style="color: peru; padding: 14px 20px; font-size: x-large; margin-right: 20px;">What we believe</a>
-    <a href="how.html" style="color: peru; padding: 14px 20px; font-size: x-large; margin-right: 20px;">How it works</a>
-    <a href="story.html" style="color: peru; padding: 14px 20px; font-size: x-large;">Our story</a>
-    <h1 hre style="text-align: center; margin-top: 200px; font-size:xx-large;">Join the waitlist</h1>
-    <a href="registration.html" style="margin-left: 560px; background-color: peru; color: white; padding: 14px 20px; font-size: x-large; border-radius: 30px;  cursor: pointer;">Secure Your Spot</a>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="believe.html">What we believe</a>
+        <a href="how.html">How it works</a>
+        <a href="story.html">Our story</a>
+    </div>
+    <div class="join-section">
+        <h1>Join the waitlist</h1>
+        <a href="registration.html" class="registration-link">Secure Your Spot</a>
+    </div>
 </body>
 </html>
