@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: x-large;
+}
+
+.nav-links {
+    margin-left: 350px;
+}
+
+.nav-links a {
+    color: peru;
+    padding: 14px 20px;
+    font-size: x-large;
+    text-decoration: none;
+}
+
+.image-and-paragraph {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.image-and-paragraph img {
+    flex: 0 0 auto;
+}
+
+.image-and-paragraph p {
+    font-size: large;
+    line-height: 1.5;
+}
