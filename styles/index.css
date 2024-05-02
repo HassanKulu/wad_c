@@ -1,7 +1,17 @@
 body {
     margin: 0;
     padding: 0;
-    position: relative; /* Make sure body is relative for absolute positioning */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.header {
+    margin-top: 200px;
+    position: relative;
+    z-index: 1; /* Ensure the logo is on top */
 }
 
 .background-img {
@@ -13,14 +23,20 @@ body {
     z-index: -1;
 }
 
-.nav-links {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 1; /* Ensure the nav links are on top */
+.navbar {
+    display: flex;
 }
 
-.nav-links a {
+.nav-links-left {
+    display: flex;
+    justify-items: flex-start;
+}
+
+.nav-links-right {
+    display: flex;
+}
+
+.nav-links-left a {
     color: aliceblue;
     padding: 14px 20px;
     font-size: x-large;
@@ -28,10 +44,10 @@ body {
     text-decoration: none;
 }
 
-.header {
-    position: absolute;
-    top: 200px;
-    left: 50%; /* Center the logo horizontally */
-    transform: translateX(-50%); /* Center the logo horizontally */
-    z-index: 1; /* Ensure the logo is on top */
+.nav-links-right a {
+    color: aliceblue;
+    padding: 14px 20px;
+    font-size: x-large;
+    text-decoration: none;
 }
+
