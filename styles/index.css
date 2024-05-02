@@ -8,13 +8,11 @@ body {
     position: relative;
 }
 
-#logo {
-    max-width: 100px;
-    height: auto;
-    margin-top: 40px;
+.header {
+    margin-top: 200px;
 }
 
-#background {
+.background-img {
     position: fixed;
     top: 0;
     left: 0;
@@ -23,13 +21,14 @@ body {
     z-index: -1;
 }
 
-.link {
+.nav-links {
+    margin-top: 20px;
+}
+
+.nav-links a {
     color: aliceblue;
     padding: 14px 20px;
     font-size: x-large;
     margin-right: 20px;
-}
-
-.link:last-child {
-    margin-right: 0;
+    text-decoration: none;
 }
