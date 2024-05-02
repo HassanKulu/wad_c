@@ -1,15 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.header {
-    margin-top: 200px;
+    position: relative; /* Make sure body is relative for absolute positioning */
 }
 
 .background-img {
@@ -22,7 +14,10 @@ body {
 }
 
 .nav-links {
-    margin-top: 20px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1; /* Ensure the nav links are on top */
 }
 
 .nav-links a {
@@ -31,4 +26,12 @@ body {
     font-size: x-large;
     margin-right: 20px;
     text-decoration: none;
+}
+
+.header {
+    position: absolute;
+    top: 200px;
+    left: 50%; /* Center the logo horizontally */
+    transform: translateX(-50%); /* Center the logo horizontally */
+    z-index: 1; /* Ensure the logo is on top */
 }
