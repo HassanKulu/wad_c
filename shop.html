@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product Listing</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles/shop.css">
 </head>
 <style>
-    .btn
-    {
+    .btn {
         background-color: black;
         color: white;
     }
@@ -33,48 +32,57 @@
                     <a class="nav-link" href="login.html">Login</a>
                 </div>
             </div>
-
         </div>
     </nav>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <!-- Content for first column -->
+                <!-- Product 1 -->
                 <img src="./images/basquait.png" alt="Product Image" class="product-img img-fluid">
                 <div class="container-fluid">
                     <div class="product-details">
                         <h3>Product Name</h3>
                         <p>Description of the product goes here.</p>
                         <p>Price: KES 10000</p>
-                        <button class="btn">Add to Cart</button>
+                        <form action="cart.php" method="POST">
+                            <input type="hidden" name="product_id" value="1">
+                            <input type="number" name="quantity" value="1" min="1">
+                            <button type="submit" class="btn">Add to Cart</button>
+                        </form>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <!-- Content for second column -->
-                  <!-- Content for first column -->
-                  <img src="./images/basquait.png" alt="Product Image" class="product-img img-fluid">
-                  <div class="container-fluid">
-                      <div class="product-details">
-                          <h3>Product Name</h3>
-                          <p>Description of the product goes here.</p>
-                          <p>Price: KES 10000</p>
-                          <button class="btn">Add to Cart</button>
-                      </div>
-                  </div>
+                <!-- Product 2 -->
+                <img src="./images/basquait.png" alt="Product Image" class="product-img img-fluid">
+                <div class="container-fluid">
+                    <div class="product-details">
+                        <h3>Product Name</h3>
+                        <p>Description of the product goes here.</p>
+                        <p>Price: KES 10000</p>
+                        <form action="cart.php" method="POST">
+                            <input type="hidden" name="product_id" value="2">
+                            <input type="number" name="quantity" value="1" min="1">
+                            <button type="submit" class="btn">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
-                <!-- Content for third column -->
-                  <!-- Content for first column -->
-                  <img src="./images/basquait.png" alt="Product Image" class="product-img img-fluid">
-                  <div class="container-fluid">
-                      <div class="product-details">
-                          <h3>Product Name</h3>
-                          <p>Description of the product goes here.</p>
-                          <p>Price: KES 10000</p>
-                          <button class="btn">Add to Cart</button>
-                      </div>
-                  </div>
+                <!-- Product 3 -->
+                <img src="./images/basquait.png" alt="Product Image" class="product-img img-fluid">
+                <div class="container-fluid">
+                    <div class="product-details">
+                        <h3>Product Name</h3>
+                        <p>Description of the product goes here.</p>
+                        <p>Price: KES 10000</p>
+                        <form action="cart.php" method="POST">
+                            <input type="hidden" name="product_id" value="3">
+                            <input type="number" name="quantity" value="1" min="1">
+                            <button type="submit" class="btn">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
