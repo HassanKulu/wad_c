@@ -30,6 +30,9 @@
                 <div class="navbar-nav">
                     <a class="nav-link" href="signup.html">Signup</a>
                     <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link" href="view_cart.php">
+                        <i class="fas fa-shopping-cart"></i> Cart
+                    </a>
                 </div>
             </div>
         </div>
@@ -76,7 +79,7 @@
                         <h3>Product Name</h3>
                         <p>Description of the product goes here.</p>
                         <p>Price: KES 10000</p>
-                        <form action="cart.php" method="POST">
+                        <form action="view_cart.php" method="POST">
                             <input type="hidden" name="product_id" value="3">
                             <input type="number" name="quantity" value="1" min="1">
                             <button type="submit" class="btn">Add to Cart</button>

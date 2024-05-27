@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id']) && isset
     $productId = $_POST['product_id'];
     $quantity = $_POST['quantity'];
     addToCart($productId, $quantity);
-    header('Location: cart_logic.php'); // Redirect to avoid form resubmission
+    header('Location: view_cart.php'); // Redirect to avoid form resubmission
     exit();
 }
 ?>
