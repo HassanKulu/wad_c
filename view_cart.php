@@ -1,6 +1,21 @@
 <?php
 session_start();
+
+// Function to remove a product from the cart
+function removeFromCart($productId) {
+    if (isset($_SESSION['cart'][$productId])) {
+        unset($_SESSION['cart'][$productId]);
+    }
+}
+
+// Handle the remove from cart action
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['product_id'])) {
+    $productId = $_POST['product_id'];
+    removeFromCart($productId);
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +35,7 @@ session_start();
                     <tr>
                         <th>Product ID</th>
                         <th>Quantity</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,12 +43,19 @@ session_start();
                         <tr>
                             <td><?php echo htmlspecialchars($productId); ?></td>
                             <td><?php echo htmlspecialchars($quantity); ?></td>
+                            <td>
+                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($productId); ?>">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         <?php endif; ?>
-        <a href="products.html" class="btn btn-primary">Continue Shopping</a>
+        <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
     </div>
 </body>
 </html>
