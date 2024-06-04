@@ -23,6 +23,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Cart</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+        .btn-primary {
+            background-color: #bc6c25 !important;
+            border-color: #bc6c25 !important;
+        }
+        .btn-primary:hover {
+            background-color: #8e5217 !important;
+            border-color: #8e5217 !important;
+        }
+        table {
+            color: #fff !important;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -59,3 +76,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     </div>
 </body>
 </html>
+
