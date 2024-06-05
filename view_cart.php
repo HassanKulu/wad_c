@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Product ID</th>
+                        <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Action</th>
                     </tr>
@@ -58,8 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
                 <tbody>
                     <?php foreach ($_SESSION['cart'] as $productId => $quantity): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($productId); ?></td>
-                            <td><?php echo htmlspecialchars($quantity); ?></td>
+                        <td><?php echo htmlspecialchars($_SESSION['product_name'][$productId]); ?></td>
+                        <td><?php echo htmlspecialchars($quantity); ?></td>
                             <td>
                                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                     <input type="hidden" name="action" value="delete">
