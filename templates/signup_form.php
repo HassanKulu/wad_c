@@ -52,23 +52,36 @@
                     if ($password != $confirmPassword) {
                         echo '<div class="alert alert-danger" role="alert">Passwords do not match!</div>';
                     } else {
-                        // Hash the password
-                        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                        // Check if email already exists
+                        $emailCheckSql = "SELECT * FROM users WHERE email = ?";
+                        $emailCheckStmt = $conn->prepare($emailCheckSql);
+                        $emailCheckStmt->bind_param("s", $email);
+                        $emailCheckStmt->execute();
+                        $result = $emailCheckStmt->get_result();
 
-                        // Prepare and execute SQL statement to insert into 'users' table
-                        $sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->bind_param("sss", $name, $email, $hashed_password);
-
-                        if ($stmt->execute()) {
-                            // Redirect to another page upon successful registration
-                            header("Location: login.php");
-                            exit();
+                        if ($result->num_rows > 0) {
+                            echo '<div class="alert alert-danger" role="alert">Email already exists!</div>';
                         } else {
-                            echo '<div class="alert alert-danger" role="alert">Error: ' . $conn->error . '</div>';
+                            // Hash the password
+                            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                            // Prepare and execute SQL statement to insert into 'users' table
+                            $sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->bind_param("sss", $name, $email, $hashed_password);
+
+                            if ($stmt->execute()) {
+                                // Redirect to another page upon successful registration
+                                header("Location: login.php");
+                                exit();
+                            } else {
+                                echo '<div class="alert alert-danger" role="alert">Error: ' . $conn->error . '</div>';
+                            }
+
+                            $stmt->close();
                         }
 
-                        $stmt->close();
+                        $emailCheckStmt->close();
                     }
 
                     $conn->close();
@@ -103,6 +116,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-
 
