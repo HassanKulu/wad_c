@@ -61,7 +61,9 @@
                         $stmt->bind_param("sss", $name, $email, $hashed_password);
 
                         if ($stmt->execute()) {
-                            echo '<div class="alert alert-success" role="alert">User registered successfully!</div>';
+                            // Redirect to another page upon successful registration
+                            header("Location: login.php");
+                            exit();
                         } else {
                             echo '<div class="alert alert-danger" role="alert">Error: ' . $conn->error . '</div>';
                         }
@@ -101,5 +103,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
 
 
