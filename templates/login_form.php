@@ -55,7 +55,9 @@
                     $stmt->fetch();
 
                     if ($hashed_password && password_verify($password, $hashed_password)) {
-                        echo '<div class="alert alert-success" role="alert">Login successful!</div>';
+                        // Login successful, redirect to another page
+                        header("Location: index.php");
+                        exit();
                     } else {
                         echo '<div class="alert alert-danger" role="alert">Invalid email or password!</div>';
                     }
@@ -84,3 +86,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
