@@ -26,7 +26,46 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h2>Login</h2>
-                <form action="login_process.php" method="post">
+                <?php
+                // Process the form submission
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "AllahuAkbar99#";
+                    $dbname = "wad_c";
+
+                    // Create connection
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    // Check connection
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    // Retrieve form data
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+
+                    // Prepare and execute SQL statement to select from 'users' table
+                    $sql = "SELECT password FROM users WHERE email = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $email);
+                    $stmt->execute();
+                    $stmt->bind_result($hashed_password);
+                    $stmt->fetch();
+
+                    if ($hashed_password && password_verify($password, $hashed_password)) {
+                        echo '<div class="alert alert-success" role="alert">Login successful!</div>';
+                    } else {
+                        echo '<div class="alert alert-danger" role="alert">Invalid email or password!</div>';
+                    }
+
+                    $stmt->close();
+                    $conn->close();
+                }
+                ?>
+
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="form-group">
                         <label for="email">Email address</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
