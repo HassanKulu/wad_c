@@ -6,6 +6,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav mr-auto">
+                    <a class="nav-link" href="shop.php">Shop</a>
                     <a class="nav-link" href="products.php">Products</a>
                     <a class="nav-link" href="contact.php">Contact</a>
                     <a class="nav-link" href="story.php">Our story</a>
