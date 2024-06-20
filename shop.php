@@ -22,14 +22,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav mr-auto">
-                    <a class="nav-link" href="index.html">Home</a>
-                    <a class="nav-link" href="products.html">Products</a>
-                    <a class="nav-link" href="contact.html">Contact</a>
-                    <a class="nav-link" href="story.html">Our story</a>
+                    <a class="nav-link" href="home.php">Home</a>
+                    <a class="nav-link" href="products.php">Products</a>
+                    <a class="nav-link" href="contact.php">Contact</a>
+                    <a class="nav-link" href="story.php">Our story</a>
                 </div>
                 <div class="navbar-nav">
-                    <a class="nav-link" href="signup.html">Signup</a>
-                    <a class="nav-link" href="login.html">Login</a>
                     <a class="nav-link" href="view_cart.php">
                         <i class="fas fa-shopping-cart"></i> Cart
                     </a>
