@@ -56,7 +56,7 @@
 
                     if ($hashed_password && password_verify($password, $hashed_password)) {
                         // Login successful, redirect to another page
-                        header("Location: index.php");
+                        header("Location: home.php");
                         exit();
                     } else {
                         echo '<div class="alert alert-danger" role="alert">Invalid email or password!</div>';

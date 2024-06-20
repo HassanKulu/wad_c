@@ -9,27 +9,36 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles/index.css">
     <style>
-        .button-container {
-            text-align: center;
-            margin-top: 20px;
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
         }
-        .btn-custom {
-            background-color: white;
-            border-radius: 25px;
-            padding: 10px 20px;
-            border: 1px solid #ccc;
-            margin: 10px;
+        .background-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+        .header {
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
 <body>
-    <img src="./images/background.jpg" alt="Background Image" class="background-img">
+    <video autoplay muted loop class="background-video">
+        <source src="https://res.cloudinary.com/dyl7sjlyv/video/upload/v1718857831/Snapinsta.app_video_C449EFEAA0B848C5AA51076D4F632FA4_video_dashinit_tgf7hm.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <?php include './templates/index_nav.php'; ?>
     <div class="header">
         <img src="./images/logo.png" alt="logo" style="max-width: 100px; height: auto;">
-    </div>
-    <div class="button-container">
-    <a href="login.php" class="btn btn-custom">Login</a>
-    <a href="signup.php" class="btn btn-custom">Sign Up</a>
     </div>
     <!-- Add Bootstrap JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -37,3 +46,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +10,28 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles/index.css">
+    <style>
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn-custom {
+            background-color: white;
+            border-radius: 25px;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
     <img src="./images/background.jpg" alt="Background Image" class="background-img">
-    <?php include './templates/index_nav.php'; ?>
     <div class="header">
         <img src="./images/logo.png" alt="logo" style="max-width: 100px; height: auto;">
+    </div>
+    <div class="button-container">
+    <a href="login.php" class="btn btn-custom">Login</a>
+    <a href="signup.php" class="btn btn-custom">Sign Up</a>
     </div>
     <!-- Add Bootstrap JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
