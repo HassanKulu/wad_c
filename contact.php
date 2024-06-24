@@ -12,8 +12,7 @@
         background-color: black;
         color: white; 
     }
-    .container
-    {
+    .container {
         margin-top: 50px;
     }
 </style>
@@ -40,14 +39,14 @@
         </div>
     </nav>
     <div class="container">
-        <form>
+        <form method="post" action="./templates/save_message.php">
             <div class="form-group">
-                <label for="exampleFormControlInput1">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <label for="exampleFormControlInput2">Subject</label>
+                <input type="text" class="form-control" id="exampleFormControlInput2" name="subject" placeholder="Subject" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Message</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="3" required></textarea>
             </div>
             <button type="submit" class="btn btn-outline-secondary">Submit</button>
         </form>
@@ -57,4 +56,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
 
