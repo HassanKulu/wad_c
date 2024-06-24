@@ -76,7 +76,7 @@ if ($sel_msg_res->num_rows > 0) {
             <td><?php echo '<strong>' . $sel_msg_row["subject"] . '</strong> - ' . substr($sel_msg_row["message"], 0, 25) . '...'; ?></td>
             <td><?php echo date("d-M-Y H:i", strtotime($sel_msg_row["created_at"])); ?></td>
             <td>
-                [ <a href="edit_msg.php?messageId=<?php echo $sel_msg_row["id"]; ?>">Edit</a> ] 
+                [ <a href="edit_message.php?messageId=<?php echo $sel_msg_row["id"]; ?>">Edit</a> ] 
                 [ <a href="?DelId=<?php echo $sel_msg_row["id"]; ?>">Del</a> ]
             </td>
         </tr>
