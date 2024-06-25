@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
                 </tbody>
             </table>
         <?php endif; ?>
-        <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+        <a href="shop.php" class="btn btn-primary">Continue Shopping</a>
     </div>
 </body>
 </html>
