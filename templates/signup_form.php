@@ -91,7 +91,7 @@
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                        <input type="text" class="form-control" maxlength= "60" id="name" name="name" placeholder="Enter your name" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email address</label>
