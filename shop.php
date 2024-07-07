@@ -38,6 +38,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <a class="nav-link" href="view_cart.php">
                         <i class="fas fa-shopping-cart"></i> Cart
                     </a>
+                    <form action="/wad_c/templates/logout.php" method="post" class="nav-link">
+                    <button type="submit" class="logout-btn">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>
