@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +58,8 @@
                     $stmt->fetch();
 
                     if ($hashed_password && password_verify($password, $hashed_password)) {
-                        // Login successful, redirect to another page
+                        // Login successful, set session and redirect to another page
+                        $_SESSION['loggedin'] = true;
                         header("Location: home.php");
                         exit();
                     } else {
@@ -86,4 +90,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
 
