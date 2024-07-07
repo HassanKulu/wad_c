@@ -7,31 +7,56 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit();
 }
 
-// Initialize the cart if it doesn't exist
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = [];
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "AllahuAkbar99#";
+$dbname = "wad_c";
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
 // Function to add a product to the cart
-function addToCart($productId, $quantity, $productName) {
-    // Check if the product is already in the cart
-    if (isset($_SESSION['cart'][$productId])) {
-        $_SESSION['cart'][$productId] += $quantity;
-    } else {
-        $_SESSION['cart'][$productId] = $quantity;
-    }
+function addToCart($userId, $productId, $quantity) {
+    global $conn;
 
-    // Store product name in the session
-    $_SESSION['product_name'][$productId] = $productName;
+    // Check if the product is already in the user's cart
+    $sql = "SELECT quantity FROM carts WHERE user_id = ? AND product_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $userId, $productId);
+    $stmt->execute();
+    $stmt->bind_result($existingQuantity);
+    $stmt->fetch();
+    $stmt->close();
+
+    if ($existingQuantity) {
+        // Update quantity if the product is already in the cart
+        $newQuantity = $existingQuantity + $quantity;
+        $sql = "UPDATE carts SET quantity = ? WHERE user_id = ? AND product_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iii", $newQuantity, $userId, $productId);
+        $stmt->execute();
+        $stmt->close();
+    } else {
+        // Insert new product into the cart
+        $sql = "INSERT INTO carts (user_id, product_id, quantity) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iii", $userId, $productId, $quantity);
+        $stmt->execute();
+        $stmt->close();
+    }
 }
 
 // Handle the add to cart action
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id']) && isset($_POST['quantity'])) {
+    $userId = $_SESSION['user_id']; // Assuming you have stored user ID in the session
     $productId = $_POST['product_id'];
     $quantity = $_POST['quantity'];
-    addToCart($productId, $quantity, $_POST['product_name']);
+    addToCart($userId, $productId, $quantity);
     header('Location: view_cart.php'); // Redirect to avoid form resubmission
     exit();
 }
 ?>
-

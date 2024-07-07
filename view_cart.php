@@ -7,19 +7,48 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit();
 }
 
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "AllahuAkbar99#";
+$dbname = "wad_c";
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 // Function to remove a product from the cart
-function removeFromCart($productId) {
-    if (isset($_SESSION['cart'][$productId])) {
-        unset($_SESSION['cart'][$productId]);
-    }
+function removeFromCart($userId, $productId) {
+    global $conn;
+
+    $sql = "DELETE FROM carts WHERE user_id = ? AND product_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $userId, $productId);
+    $stmt->execute();
+    $stmt->close();
 }
 
 // Handle the remove from cart action
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['product_id'])) {
+    $userId = $_SESSION['user_id']; // Assuming you have stored user ID in the session
     $productId = $_POST['product_id'];
-    removeFromCart($productId);
+    removeFromCart($userId, $productId);
 }
 
+// Retrieve cart items for the logged-in user
+$userId = $_SESSION['user_id']; // Assuming you have stored user ID in the session
+$sql = "SELECT products.name, carts.quantity, products.id AS product_id FROM carts JOIN products ON carts.product_id = products.id WHERE carts.user_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$stmt->bind_result($productName, $quantity, $productId);
+$cartItems = [];
+while ($stmt->fetch()) {
+    $cartItems[] = ['name' => $productName, 'quantity' => $quantity, 'product_id' => $productId];
+}
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
 <body>
     <div class="container">
         <h1>Your Cart</h1>
-        <?php if (empty($_SESSION['cart'])): ?>
+        <?php if (empty($cartItems)): ?>
             <p>Your cart is empty.</p>
         <?php else: ?>
             <table class="table">
@@ -62,14 +91,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($_SESSION['cart'] as $productId => $quantity): ?>
+                    <?php foreach ($cartItems as $item): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($_SESSION['product_name'][$productId]); ?></td>
-                            <td><?php echo htmlspecialchars($quantity); ?></td>
+                            <td><?php echo htmlspecialchars($item['name']); ?></td>
+                            <td><?php echo htmlspecialchars($item['quantity']); ?></td>
                             <td>
                                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                     <input type="hidden" name="action" value="delete">
-                                    <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($productId); ?>">
+                                    <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($item['product_id']); ?>">
                                     <button type="submit" class="btn btn-danger">Remove</button>
                                 </form>
                             </td>
@@ -82,6 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     </div>
 </body>
 </html>
+
 
 
 

@@ -50,16 +50,17 @@ session_start();
                     $password = $_POST['password'];
 
                     // Prepare and execute SQL statement to select from 'users' table
-                    $sql = "SELECT password FROM users WHERE email = ?";
+                    $sql = "SELECT id, password FROM users WHERE email = ?";
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("s", $email);
                     $stmt->execute();
-                    $stmt->bind_result($hashed_password);
+                    $stmt->bind_result($userId, $hashed_password);
                     $stmt->fetch();
 
                     if ($hashed_password && password_verify($password, $hashed_password)) {
                         // Login successful, set session and redirect to another page
                         $_SESSION['loggedin'] = true;
+                        $_SESSION['user_id'] = $userId;
                         header("Location: home.php");
                         exit();
                     } else {
@@ -90,5 +91,3 @@ session_start();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-
