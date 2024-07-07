@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+// Check if the user is logged in
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: login.php");
+    exit();
+}
+
 // Initialize the cart if it doesn't exist
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
@@ -19,14 +25,13 @@ function addToCart($productId, $quantity, $productName) {
     $_SESSION['product_name'][$productId] = $productName;
 }
 
-
 // Handle the add to cart action
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id']) && isset($_POST['quantity'])) {
     $productId = $_POST['product_id'];
     $quantity = $_POST['quantity'];
     addToCart($productId, $quantity, $_POST['product_name']);
-    var_dump($_SESSION['product_name']); // Debugging line
     header('Location: view_cart.php'); // Redirect to avoid form resubmission
     exit();
 }
 ?>
+

@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+// Check if the user is logged in
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: login.php");
+    exit();
+}
+
 // Function to remove a product from the cart
 function removeFromCart($productId) {
     if (isset($_SESSION['cart'][$productId])) {
@@ -58,8 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
                 <tbody>
                     <?php foreach ($_SESSION['cart'] as $productId => $quantity): ?>
                         <tr>
-                        <td><?php echo htmlspecialchars($_SESSION['product_name'][$productId]); ?></td>
-                        <td><?php echo htmlspecialchars($quantity); ?></td>
+                            <td><?php echo htmlspecialchars($_SESSION['product_name'][$productId]); ?></td>
+                            <td><?php echo htmlspecialchars($quantity); ?></td>
                             <td>
                                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                     <input type="hidden" name="action" value="delete">
@@ -76,4 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     </div>
 </body>
 </html>
+
+
 
