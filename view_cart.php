@@ -39,14 +39,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
 
 // Retrieve cart items for the logged-in user
 $userId = $_SESSION['user_id']; // Assuming you have stored user ID in the session
-$sql = "SELECT products.name, carts.quantity, products.id AS product_id FROM carts JOIN products ON carts.product_id = products.id WHERE carts.user_id = ?";
+$sql = "
+    SELECT users.name AS user_name, products.name AS product_name, carts.quantity, products.id AS product_id 
+    FROM carts 
+    JOIN products ON carts.product_id = products.id 
+    JOIN users ON carts.user_id = users.id 
+    WHERE carts.user_id = ?
+";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $userId);
 $stmt->execute();
-$stmt->bind_result($productName, $quantity, $productId);
+$stmt->bind_result($userName, $productName, $quantity, $productId);
 $cartItems = [];
 while ($stmt->fetch()) {
-    $cartItems[] = ['name' => $productName, 'quantity' => $quantity, 'product_id' => $productId];
+    $cartItems[] = ['user_name' => $userName, 'product_name' => $productName, 'quantity' => $quantity, 'product_id' => $productId];
 }
 $stmt->close();
 ?>
@@ -78,7 +84,7 @@ $stmt->close();
 </head>
 <body>
     <div class="container">
-        <h1>Your Cart</h1>
+        <h2>User: <?php echo htmlspecialchars($userName); ?></h2>
         <?php if (empty($cartItems)): ?>
             <p>Your cart is empty.</p>
         <?php else: ?>
@@ -93,7 +99,7 @@ $stmt->close();
                 <tbody>
                     <?php foreach ($cartItems as $item): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($item['name']); ?></td>
+                            <td><?php echo htmlspecialchars($item['product_name']); ?></td>
                             <td><?php echo htmlspecialchars($item['quantity']); ?></td>
                             <td>
                                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -111,6 +117,7 @@ $stmt->close();
     </div>
 </body>
 </html>
+
 
 
 
